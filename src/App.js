@@ -26,6 +26,11 @@ class App extends Component {
   createReptile = (newlyCreatedReptile) => {
     console.log(newlyCreatedReptile)
   }
+
+  updateReptile = (reptile, id) => {
+    console.log("reptile:", reptile)
+    console.log("id:", id)
+  }
   
   render() {
     return (
@@ -38,9 +43,13 @@ class App extends Component {
               let id = props.match.params.id
               let reptile = this.state.reptiles.find(reptile => reptile.id === +id)
                 return <ReptileShow reptile={reptile} />
-}} />
+          }} />
           <Route path="/reptilenew" render={() => {return <ReptileNew createReptile={this.createReptile} /> }} />
-          <Route path="/reptileedit" component={ReptileEdit} />
+          <Route path="/reptileedit/:id" render={(props) => {
+            let id = props.match.params.id
+            let reptile = this.state.reptiles.find(reptile => reptile.id === +id)
+            return <ReptileEdit updateReptile={this.updateReptile} reptile={reptile} />
+          }} />
           <Route component={NotFound}/>
         </Switch>
         <Footer />
