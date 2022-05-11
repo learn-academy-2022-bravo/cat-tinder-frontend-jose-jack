@@ -22,6 +22,11 @@ class App extends Component {
       reptiles: reptiles
     }
   }
+
+  createReptile = (newlyCreatedReptile) => {
+    console.log(newlyCreatedReptile)
+  }
+  
   render() {
     return (
       <Router>
@@ -34,7 +39,7 @@ class App extends Component {
               let reptile = this.state.reptiles.find(reptile => reptile.id === +id)
                 return <ReptileShow reptile={reptile} />
 }} />
-          <Route path="/reptilenew" component={ReptileNew} />
+          <Route path="/reptilenew" render={() => {return <ReptileNew createReptile={this.createReptile} /> }} />
           <Route path="/reptileedit" component={ReptileEdit} />
           <Route component={NotFound}/>
         </Switch>
