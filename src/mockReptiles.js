@@ -4,21 +4,21 @@ let reptiles = [
       name: "Mittens",
       age: 5,
       enjoys: "sunshine and warm spots",
-      image: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      image: 'https://i.natgeofe.com/k/c02b35d2-bfd7-4ed9-aad4-8e25627cd481/komodo-dragon-head-on_16x9.jpg?w=1200'
     },
     {
       id: 2,
       name: "Raisins",
       age: 4,
       enjoys: "being queen of the dogs",
-      image: "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1092&q=80"
+      image: "https://dr282zn36sxxg.cloudfront.net/datastreams/f-d%3A0c6d1d4d819098ff1d4013d02eb864d295a5ffb846b7d7f1a7cb4f2c%2BIMAGE_THUMB_POSTCARD_TINY%2BIMAGE_THUMB_POSTCARD_TINY.1"
     },
     {
       id: 3,
       name: "Toast",
       age: 1,
       enjoys: "getting all the attention",
-      image: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      image: "https://www.nrcm.org/wp-content/uploads/2020/07/turtle-by-Jayne-Winters.jpg"
     }
   ]
   export default reptiles

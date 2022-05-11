@@ -28,8 +28,12 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/reptileindex" component={ReptileIndex} />
-          <Route path="/reptileshow" component={ReptileShow} />
+          <Route path="/reptileindex" render={(props) => < ReptileIndex reptiles={this.state.reptiles}/>}/>
+          <Route path="/reptileshow/:id" render={(props) => {
+              let id = props.match.params.id
+              let reptile = this.state.reptiles.find(reptile => reptile.id === +id)
+                return <ReptileShow reptile={reptile} />
+}} />
           <Route path="/reptilenew" component={ReptileNew} />
           <Route path="/reptileedit" component={ReptileEdit} />
           <Route component={NotFound}/>
