@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import reptiles from './mockReptiles';
 import {
   BrowserRouter as Router,
   Route,
@@ -19,18 +18,58 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      reptiles: reptiles
+      reptiles: []
     }
   }
 
-  createReptile = (newlyCreatedReptile) => {
-    console.log(newlyCreatedReptile)
+componentDidMount(){
+  this.readReptile()
+}
+
+readReptile = () => {
+  fetch("http://localhost:3000/reptiles")
+  .then(response => response.json())
+  .then(reptilesArray => this.setState({reptiles: reptilesArray}))
+  .catch(errors => console.log("Reptile read errors:", errors))
+}
+
+createReptile = (newlyCreatedReptile) => {
+    fetch("http://localhost:3000/reptiles", {
+      body: JSON.stringify(newlyCreatedReptile),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => response.json())
+    .then(() => this.readReptile())
+    .catch(errors => console.log("Reptile create errors:", errors))
   }
 
   updateReptile = (reptile, id) => {
-    console.log("reptile:", reptile)
-    console.log("id:", id)
-  }
+      fetch(`http://localhost:3000/reptiles/${id}`, {
+        body: JSON.stringify(reptile),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "PATCH"
+      })
+      .then(response => response.json())
+      .then(() => this.readReptile())
+      .catch(errors => console.log("Reptile update errors:", errors))
+    }
+
+    deleteReptlile = (id) => {
+      fetch(`http://localhost:3000/reptiles/${id}`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "DELETE"
+      })
+      .then(response => response.json())
+      .then(() => this.readReptile())
+      .catch(errors => console.log("delete errors:", errors))
+    }
   
   render() {
     return (
@@ -42,7 +81,7 @@ class App extends Component {
           <Route path="/reptileshow/:id" render={(props) => {
               let id = props.match.params.id
               let reptile = this.state.reptiles.find(reptile => reptile.id === +id)
-                return <ReptileShow reptile={reptile} />
+              return <ReptileShow deleteReptile={this.deleteReptlile} reptile={reptile} />
           }} />
           <Route path="/reptilenew" render={() => {return <ReptileNew createReptile={this.createReptile} /> }} />
           <Route path="/reptileedit/:id" render={(props) => {
