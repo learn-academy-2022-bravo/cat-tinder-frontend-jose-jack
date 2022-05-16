@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {Nav,NavItem, NavLink} from 'reactstrap'
+import { NavLink } from 'react-router-dom';
+import {Nav,NavItem} from 'reactstrap'
 
 class Header extends Component {
     render() {
         return (
             <Nav pills>
                 <NavItem>
-                    <NavLink
+                    <NavLink className="nav-link"
                         active
-                        href="/"
+                       to="/"
                     >
                         Home
                     </NavLink>
                 </NavItem>
             
                 <NavItem>
-                    <NavLink href="/reptileindex">
+                    <NavLink className="nav-link" to="/reptileindex">
                         Reptiles
                     </NavLink>
                 </NavItem>
                     <NavItem>
-                    <NavLink href="/reptilenew">
+                    <NavLink className="nav-link" to="/reptilenew">
                         New Profile
                     </NavLink>
                 </NavItem>
