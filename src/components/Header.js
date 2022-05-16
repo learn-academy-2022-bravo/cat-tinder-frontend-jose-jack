@@ -1,13 +1,33 @@
 import React, { Component } from 'react';
-import '../App.css'
+import '../App.css';
+import {Nav,NavItem, NavLink} from 'reactstrap'
 
 class Header extends Component {
     render() {
         return (
-            <div className='header'>
-                <h2 id='h2'>Header</h2>
-            </div>
-        );
+            <Nav pills>
+                <NavItem>
+                    <NavLink
+                        active
+                        href="/"
+                    >
+                        Home
+                    </NavLink>
+                </NavItem>
+            
+                <NavItem>
+                    <NavLink href="/reptileindex">
+                        Reptiles
+                    </NavLink>
+                </NavItem>
+                    <NavItem>
+                    <NavLink href="/reptilenew">
+                        New Profile
+                    </NavLink>
+                </NavItem>
+
+</Nav>
+        )
     }
 }
 
